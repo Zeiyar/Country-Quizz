@@ -1,0 +1,15 @@
+<h2>Liste des pays</h2>
+
+<div *ngIf="loading">Chargement des pays...</div>
+<button routerLink="/quiz">Lancer le quiz</button>
+
+<ul *ngIf="!loading">
+  <li *ngFor="let country of countries">
+    <img 
+      [src]="country.flags.png" 
+      alt="Drapeau"
+      width="30"
+    />
+    {{ country.name.common }} - {{ country.capital?.[0] }}
+  </li>
+</ul>

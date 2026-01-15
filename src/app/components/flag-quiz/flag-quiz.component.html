@@ -1,0 +1,30 @@
+<div class="quiz-container" *ngIf="question">
+  <div class="quiz-card">
+    <h2 class="quiz-title">Quel est ce drapeau ?</h2>
+
+    <div class="flag-container">
+      <img
+        [src]="question.flagUrl"
+        alt="Drapeau"
+        class="flag-image"
+      />
+    </div>
+
+    <div class="options">
+      <button
+        *ngFor="let option of question.options"
+        class="option-button"
+        (click)="selectOption(option)"
+        [disabled]="question.userAnswer"
+        [class.correct]="question.userAnswer && option === question.correctAnswer"
+        [class.wrong]="question.userAnswer && option === question.userAnswer && option !== question.correctAnswer"
+      >
+        {{ option }}
+      </button>
+    </div>
+
+    <p *ngIf="question.userAnswer" class="answer-feedback">
+      {{ question.isCorrect ? '✅ Bonne réponse !' : '❌ Mauvaise réponse' }}
+    </p>
+  </div>
+</div>

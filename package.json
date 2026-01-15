@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "dev:ssr": "ng run country-app:serve-ssr",
+    "build:ssr": "ng build && ng run country-app:server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:country-app": "node dist/country-app/server/server.mjs"
