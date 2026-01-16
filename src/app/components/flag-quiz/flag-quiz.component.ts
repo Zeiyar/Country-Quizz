@@ -3,38 +3,53 @@ import { CountryService } from '../../services/country.service';
 import { FlagQuizService } from '../../services/flag_quizz.service';
 import { FlagQuestion } from '../../models/flag-question.model';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-flag-quiz',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, RouterModule],
   templateUrl: './flag-quiz.component.html',
   styleUrls: ['./flag-quiz.component.css']
 })
 export class FlagQuizComponent implements OnInit {
-
-  question?: FlagQuestion;
-
+    // question?: FlagQuestion | null = null;
   constructor(
     private countryService: CountryService,
     private flagQuizService: FlagQuizService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
   ) {}
+    question = this.createEmptyQuestion();
+ private createEmptyQuestion(): FlagQuestion{
+    return{
+        flagUrl:'',
+        options:[],
+        correctAnswer:'',
+    }
+  }
 
   countries: any[] = [];
   score = 0;
   questionNumber = 1;
   readonly TOTAL_QUESTIONS = 10;
   isFinished = false;
+  isReady = false;
   
   ngOnInit(): void {
-    this.countryService.getAllCountries().subscribe(countries => {
-      this.countries = countries;
-      this.loadQuestion();
-    });
-  }
+     this.countries = this.route.snapshot.data['countries'];
+
+  // sécurité
+  this.countries = this.countries.filter(c =>
+    c.name?.common && c.flags?.png
+  );
+
+  this.loadQuestion();
+}
 
     loadQuestion(): void {
-        this.question = this.flagQuizService.generateQuestion(this.countries);
+        this.question = this.flagQuizService.generateQuestion(this.countries); 
     }
   nextQuestion(): void {
     console.log("Next question called");

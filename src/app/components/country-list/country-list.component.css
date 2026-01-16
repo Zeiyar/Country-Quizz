@@ -1,11 +1,17 @@
+/* =========================
+   HOST (page entière)
+   ========================= */
 :host {
   display: block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* =========================
+   TITRE
+   ========================= */
 h2 {
   text-align: center;
   color: white;
@@ -14,50 +20,75 @@ h2 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 
-div {
+/* =========================
+   LOADING (div *ngIf="loading")
+   ========================= */
+div[ng-reflect-ng-if] {
   text-align: center;
   color: white;
   font-size: 18px;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 15px;
   backdrop-filter: blur(10px);
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
+/* =========================
+   BOUTONS
+   ========================= */
 button {
-  display: block;
-  margin: 30px auto;
-  padding: 15px 40px;
+  display: inline-block;
+  margin: 10px auto;
+  padding: 14px 36px;
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   color: white;
   border: none;
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+  box-shadow: 0 8px 25px rgba(245, 87, 108, 0.45);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(245, 87, 108, 0.6);
+  box-shadow: 0 14px 35px rgba(245, 87, 108, 0.6);
   background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
 }
 
 button:active {
   transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+  box-shadow: 0 6px 15px rgba(245, 87, 108, 0.4);
 }
 
+/* =========================
+   INPUT RECHERCHE
+   ========================= */
+input[type="text"] {
+  display: block;
+  margin: 20px auto 30px;
+  padding: 12px 18px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 30px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   LISTE
+   ========================= */
 ul {
   list-style: none;
   padding: 0;
@@ -65,49 +96,37 @@ ul {
   margin: 0 auto;
 }
 
+/* =========================
+   ITEM PAYS
+   ========================= */
 li {
+  position: relative;
   display: flex;
   align-items: center;
   background: white;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   padding: 18px 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
-  border-left: 4px solid #667eea;
+  border-left: 5px solid #667eea;
   animation: slideIn 0.4s ease-out;
 }
 
 li:hover {
-  transform: translateX(8px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  transform: translateX(10px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.25);
   border-left-color: #f5576c;
+  z-index: 10;
 }
 
-li:nth-child(1) {
-  animation-delay: 0.05s;
-}
-
-li:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-li:nth-child(3) {
-  animation-delay: 0.15s;
-}
-
-li:nth-child(4) {
-  animation-delay: 0.2s;
-}
-
-li:nth-child(n + 5) {
-  animation-delay: 0.25s;
-}
-
+/* =========================
+   ANIMATION
+   ========================= */
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-25px);
   }
   to {
     opacity: 1;
@@ -115,12 +134,14 @@ li:nth-child(n + 5) {
   }
 }
 
+/* =========================
+   DRAPEAU
+   ========================= */
 li img {
   width: 45px;
-  height: auto;
   border-radius: 6px;
   margin-right: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
   transition: transform 0.3s ease;
 }
 
@@ -128,14 +149,55 @@ li:hover img {
   transform: scale(1.15) rotate(-5deg);
 }
 
-li span,
+/* =========================
+   TEXTE
+   ========================= */
 li {
   color: #333;
   font-size: 16px;
   font-weight: 500;
 }
 
-/* Responsive design */
+/* =========================
+   DETAILS AU HOVER
+   ========================= */
+li > div {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+li > div p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* =========================
+   FADE IN DETAILS
+   ========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 600px) {
   h2 {
     font-size: 28px;
@@ -146,12 +208,16 @@ li {
   }
 
   li img {
-    width: 40px;
-    margin-right: 15px;
+    width: 38px;
+    margin-right: 14px;
   }
 
   button {
-    padding: 12px 30px;
-    font-size: 14px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  input[type="text"] {
+    width: 100%;
   }
 }
