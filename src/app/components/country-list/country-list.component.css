@@ -17,7 +17,7 @@ h2 {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-div[*ngIf="loading"] {
+div {
   text-align: center;
   color: white;
   font-size: 18px;

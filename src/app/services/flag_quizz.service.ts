@@ -18,7 +18,9 @@ export class FlagQuizService {
     return {
       flagUrl: correctCountry.flags.png,
       options,
-      correctAnswer: correctName
+      correctAnswer: correctName,
+      userAnswer: undefined,
+      isCorrect: false
     };
   }
 // Helper methods to get random country and names

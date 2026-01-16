@@ -1,6 +1,9 @@
-<div class="quiz-container" *ngIf="question">
+<!-- QUIZ EN COURS -->
+<div class="quiz-container" *ngIf="question && !isFinished">
   <div class="quiz-card">
-    <h2 class="quiz-title">Quel est ce drapeau ?</h2>
+    <h2 class="quiz-title">
+      Question {{ questionNumber }} / {{ TOTAL_QUESTIONS }}
+    </h2>
 
     <div class="flag-container">
       <img
@@ -26,5 +29,30 @@
     <p *ngIf="question.userAnswer" class="answer-feedback">
       {{ question.isCorrect ? '✅ Bonne réponse !' : '❌ Mauvaise réponse' }}
     </p>
+
+
+        <button
+          *ngIf="question.userAnswer"
+          class="next-button option-button"
+          (click)="nextQuestion()"
+        >
+          Question suivante
+        </button>
+  </div>
+</div>
+
+<!-- FIN DU QUIZ -->
+<div class="quiz-container" *ngIf="isFinished">
+  <div class="quiz-card result">
+    <h2 class="quiz-title">Quiz terminé 🎉</h2>
+
+    <p class="final-score">
+      Score final :
+      <strong>{{ score }} / {{ TOTAL_QUESTIONS }}</strong>
+    </p>
+
+    <p *ngIf="score >= 9" class="result-message excellent">Trop fort !</p>
+    <p *ngIf="score >= 5 && score < 9" class="result-message good">ça va</p>
+    <p *ngIf="score < 5" class="result-message retry">Loser !</p>
   </div>
 </div>
