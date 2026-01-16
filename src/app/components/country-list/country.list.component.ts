@@ -52,27 +52,6 @@ export class CountryListComponent implements OnInit {
     );
   }
   getAllCountryObservable : Subscription | undefined;
-  // Load all countries from the service
-//   loadCountries(): void {
-//     console.log("load countries")
-//     this.getAllCountryObservable = this.countryService.getAllCountries().subscribe({
-//       next: (data) => {
-//         this.countries = data.sort((a, b) => b.population - a.population);
-//         console.log(this.countries)
-//         this.fullCountryList = data;
-//         this.loading = false;
-//         console.log("initialisation du component", this.loading);
-
-//       },
-//       error: (err) => {
-//         console.error(err);
-//         this.loading = false;
-//       },
-//       complete:()=>{
-//         console.log(this.loading, "complete")
-//       }
-//     });
-//   }
     // Lifecycle hook for component destruction
   ngOnDestroy(): void {
     console.log("destruction du component");
