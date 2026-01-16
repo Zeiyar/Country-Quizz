@@ -1,59 +1,123 @@
-# CountryApp
+🌍 Angular Flag Quiz
+📌 Description
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
+Angular Flag Quiz est une application web développée avec Angular 21 (standalone) et Server-Side Rendering (SSR).
+Le but de l'application est de proposer un quiz interactif de drapeaux basé sur l'API publique REST Countries.
 
-## Development server
+L'utilisateur doit identifier le pays correspondant à un drapeau parmi 4 choix aléatoires. Le quiz est noté sur 20 et entièrement dynamique.
 
-To start a local development server, run:
+🎯 Objectifs pédagogiques
 
-```bash
-ng serve
-```
+Ce projet a été conçu dans un but d'apprentissage afin de :
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Comprendre les principes fondamentaux d'Angular moderne
 
-## Code scaffolding
+Manipuler des Standalone Components
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Consommer une API REST avec HttpClient
 
-```bash
-ng generate component component-name
-```
+Gérer l'asynchrone et l'état d'une application
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Implémenter un quiz interactif
 
-```bash
-ng generate --help
-```
+Comprendre la Change Detection, les NgZone et le SSR
 
-## Building
+🧠 Fonctionnalités
 
-To build the project run:
+📡 Récupération des pays via l'API REST Countries
 
-```bash
-ng build
-```
+🎲 Génération aléatoire des questions
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+🏳️ Affichage d'un drapeau par question
 
-## Running unit tests
+🔀 4 réponses possibles dont une correcte
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+✅ Feedback immédiat (bonne / mauvaise réponse)
 
-```bash
-ng test
-```
+⏭ Passage automatique à la question suivante
 
-## Running end-to-end tests
+🧮 Score calculé automatiquement
 
-For end-to-end (e2e) testing, run:
+🏁 Quiz limité à 10 questions
 
-```bash
-ng e2e
-```
+🔁 Possibilité de recommencer le quiz
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+⚡ Compatible SSR (Server-Side Rendering)
 
-## Additional Resources
+🏗️ Architecture du projet
+src/app
+│
+├── components/
+│   └── flag-quiz/
+│       ├── flag-quiz.component.ts
+│       ├── flag-quiz.component.html
+│       ├── flag-quiz.component.css
+│
+├── models/
+│   └── flag-question.model.ts
+│
+├── services/
+│   ├── country.service.ts
+│   └── flag-quiz.service.ts
+│
+├── app.routes.ts
+├── app.config.ts
+🧩 Technologies utilisées
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Angular 21 (Standalone Components)
+
+TypeScript (strict mode)
+
+Angular HttpClient
+
+REST Countries API
+
+SSR / Hydration Angular
+
+🌐 API utilisée
+
+REST Countries
+Endpoint utilisé :
+
+https://restcountries.com/v3.1/all?fields=name,flags
+
+⚠️ L'API impose de spécifier explicitement les champs utilisés.
+
+🚀 Lancer le projet
+Installation
+npm install
+Lancer en mode développement
+npm start
+Lancer avec SSR
+npm run dev:ssr
+🧠 Points techniques importants
+
+Les données sont chargées une seule fois au démarrage
+
+Le quiz fonctionne via un état interne, sans rechargement de page
+
+Les timers (setTimeout) sont gérés avec NgZone pour garantir la mise à jour de l'UI
+
+Le projet respecte les bonnes pratiques Angular modernes
+
+👥 Travail en binôme
+
+🗣️ Un membre : réflexion, conception et échanges
+
+💻 Un membre : développement et implémentation
+
+Cette approche permet de séparer la logique métier de l'implémentation technique.
+
+📈 Améliorations possibles
+
+⏱ Ajout d'un timer par question
+
+💾 Sauvegarde du score
+
+🎨 Amélioration du design
+
+🌍 Autres types de quiz (capitales, régions, population)
+
+📄 Licence
+
+Projet réalisé à des fins pédagogiques.
