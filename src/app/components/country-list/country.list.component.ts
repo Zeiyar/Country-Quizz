@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountryService } from '../../services/country.service';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-country-list',
@@ -18,14 +20,20 @@ export class CountryListComponent implements OnInit {
   sorted = true;
   hoveredCountryCode: string | null = null;
 
-  constructor(private countryService: CountryService) {}
+  constructor(private route: ActivatedRoute ) {}
 
   // Lifecycle hook to load countries on component initialization
   ngOnInit(): void {
-    this.loadCountries();
-    console.log("initialisation du component");
-  }
+    const data = this.route.snapshot.data['countries'];
 
+    // sécurité
+    this.countries = [...data].sort(
+      (a, b) => b.population - a.population
+    );
+
+    this.fullCountryList = data;
+    this.loading = false;
+  }
 
   sortByPopulation(): void {
     if(this.sorted){
@@ -43,25 +51,31 @@ export class CountryListComponent implements OnInit {
       country.name.common.toLowerCase().includes(searchTerm)
     );
   }
-
+  getAllCountryObservable : Subscription | undefined;
   // Load all countries from the service
-  loadCountries(): void {
-    console.log("load countries")
-    this.countryService.getAllCountries().subscribe({
-      next: (data) => {
-        this.countries = data.sort((a, b) => b.population - a.population);
-        console.log(this.countries)
-        this.fullCountryList = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error(err);
-        this.loading = false;
-      }
-    });
-  }
+//   loadCountries(): void {
+//     console.log("load countries")
+//     this.getAllCountryObservable = this.countryService.getAllCountries().subscribe({
+//       next: (data) => {
+//         this.countries = data.sort((a, b) => b.population - a.population);
+//         console.log(this.countries)
+//         this.fullCountryList = data;
+//         this.loading = false;
+//         console.log("initialisation du component", this.loading);
+
+//       },
+//       error: (err) => {
+//         console.error(err);
+//         this.loading = false;
+//       },
+//       complete:()=>{
+//         console.log(this.loading, "complete")
+//       }
+//     });
+//   }
     // Lifecycle hook for component destruction
   ngOnDestroy(): void {
     console.log("destruction du component");
+    this.getAllCountryObservable?.unsubscribe();
   }
 }
