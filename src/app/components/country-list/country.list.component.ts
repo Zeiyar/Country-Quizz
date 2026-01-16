@@ -46,9 +46,11 @@ export class CountryListComponent implements OnInit {
 
   // Load all countries from the service
   loadCountries(): void {
+    console.log("load countries")
     this.countryService.getAllCountries().subscribe({
       next: (data) => {
         this.countries = data.sort((a, b) => b.population - a.population);
+        console.log(this.countries)
         this.fullCountryList = data;
         this.loading = false;
       },

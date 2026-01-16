@@ -6,7 +6,10 @@ import { countriesResolver } from './resolvers/countries.resolver';
 export const routes: Routes = [
   {
     path: '',
-    component: CountryListComponent
+    component: CountryListComponent,
+    resolve: {
+      countries: countriesResolver
+    }
   },
   {
     path: 'quiz',

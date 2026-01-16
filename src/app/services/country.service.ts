@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
+import { CountryList } from '../models/country-list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CountryService {
 
   constructor(private http: HttpClient) {}
 
-  getAllCountries(): Observable<any[]> {
+  getAllCountries(): Observable<CountryList[]> {
     const fields = [
     'name',
     'flags',
@@ -20,6 +21,6 @@ export class CountryService {
     'population',
     'cca3'
   ].join(',');
-    return this.http.get<any[]>(`${this.apiUrl}/all?fields=${fields}`);
+    return this.http.get<CountryList[]>(`${this.apiUrl}/all?fields=${fields}`);
   }
 }
