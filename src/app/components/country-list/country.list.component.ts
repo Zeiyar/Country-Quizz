@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CountryService } from '../../services/country.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CountryDetailsComponent } from '../country-detail/country-detail.component';
 
 
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CountryDetailsComponent],
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.css']
 })
@@ -46,7 +46,6 @@ export class CountryListComponent implements OnInit {
   
   onSearch(event: any): void {
     const searchTerm = event.target.value.toLowerCase();
-    console.log(searchTerm);
     this.countries = this.fullCountryList.filter(country =>
       country.name.common.toLowerCase().includes(searchTerm)
     );

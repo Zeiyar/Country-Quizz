@@ -1,0 +1,18 @@
+<div
+(mouseover)="isHovered = true" (mouseout)="isHovered = false"
+>
+  <img
+    [src]="country.flags.png"
+    alt="Drapeau"
+    width="30"
+  />
+
+  {{ country.name.common }} - {{ country.capital?.[0] }}
+
+  <div *ngIf="isHovered">
+    <p>Capitale : {{ country.capital?.[0] || 'N/A' }}</p>
+    <p>Région : {{ country.region }}</p>
+    <p>Population : {{ country.population }}</p>
+    <p>Code pays : {{ country.cca3 }}</p>
+  </div>
+</div>

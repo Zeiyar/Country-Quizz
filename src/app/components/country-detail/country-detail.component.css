@@ -1,0 +1,29 @@
+:host {
+    display:block;
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================
+   DRAPEAU
+   ========================= */
+img {
+  width: 45px;
+  border-radius: 6px;
+  margin-right: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease;
+}
+
+div:hover img {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* =========================
+   TEXTE
+   ========================= */
+li {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
