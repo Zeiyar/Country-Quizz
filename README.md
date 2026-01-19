@@ -1,59 +1,72 @@
-🌍 Angular Flag Quiz
-📌 Description
+# 🌍 Angular Country Explorer & Flag Quiz
 
-Angular Flag Quiz est une application web développée avec Angular 21 (standalone) et Server-Side Rendering (SSR).
-Le but de l'application est de proposer un quiz interactif de drapeaux basé sur l'API publique REST Countries.
+## 📌 Description
 
-L'utilisateur doit identifier le pays correspondant à un drapeau parmi 4 choix aléatoires. Le quiz est noté sur 20 et entièrement dynamique.
+**Angular Country Explorer** est une application web développée avec **Angular 21 (Standalone Components)** et **Server-Side Rendering (SSR)**.  
+Elle permet à la fois :
 
-🎯 Objectifs pédagogiques
+- 📊 D’explorer les pays du monde à travers leurs **drapeaux et informations principales**
+- 🎯 De tester ses connaissances via un **quiz interactif de drapeaux**
 
-Ce projet a été conçu dans un but d'apprentissage afin de :
+Les données sont fournies par l’API publique **REST Countries** et sont entièrement dynamiques.
 
-Comprendre les principes fondamentaux d'Angular moderne
+---
 
-Manipuler des Standalone Components
+## 🎯 Objectifs pédagogiques
 
-Consommer une API REST avec HttpClient
+Ce projet a été réalisé dans un objectif d’apprentissage afin de :
 
-Gérer l'asynchrone et l'état d'une application
+- Comprendre les principes fondamentaux d’**Angular moderne**
+- Utiliser les **Standalone Components**
+- Consommer une **API REST** avec `HttpClient`
+- Gérer l’**asynchrone** et l’état d’une application
+- Implémenter des **interactions utilisateur** (hover, tri, recherche)
+- Créer un **quiz dynamique**
+- Comprendre le **SSR, la Change Detection et NgZone**
 
-Implémenter un quiz interactif
+---
+## 🧠 Fonctionnalités
 
-Comprendre la Change Detection, les NgZone et le SSR
+### 🌍 Exploration des pays
 
-🧠 Fonctionnalités
+- 📡 Récupération des pays via l’API **REST Countries**
+- 🏳️ Affichage des **drapeaux**
+- ℹ️ Affichage des **informations d’un pays au survol (hover)**  
+  - Nom  
+  - Capitale  
+  - Région  
+  - Population
+- 🔎 **Recherche d’un pays** par nom
+- 📊 **Tri des pays par population**
+- ⚡ Chargement des données une seule fois
 
-📡 Récupération des pays via l'API REST Countries
+---
 
-🎲 Génération aléatoire des questions
+### 🎲 Flag Quiz
 
-🏳️ Affichage d'un drapeau par question
+- 🏳️ Affichage d’un **drapeau par question**
+- 🔀 **4 réponses possibles** dont une correcte
+- 🎲 Génération aléatoire des questions
+- ✅ Feedback immédiat (bonne / mauvaise réponse)
+- ⏭ Passage automatique à la question suivante
+- 🧮 Score calculé automatiquement
+- 🏁 Quiz limité à **10 questions**
+- 🔁 Possibilité de recommencer le quiz
+- ⚡ Compatible **SSR (Server-Side Rendering)**
 
-🔀 4 réponses possibles dont une correcte
+---
+## 🏗️ Architecture du projet
 
-✅ Feedback immédiat (bonne / mauvaise réponse)
-
-⏭ Passage automatique à la question suivante
-
-🧮 Score calculé automatiquement
-
-🏁 Quiz limité à 10 questions
-
-🔁 Possibilité de recommencer le quiz
-
-⚡ Compatible SSR (Server-Side Rendering)
-
-🏗️ Architecture du projet
+```text
 src/app
 │
 ├── components/
+│   ├── country-list/
+│   ├── country-card/
 │   └── flag-quiz/
-│       ├── flag-quiz.component.ts
-│       ├── flag-quiz.component.html
-│       ├── flag-quiz.component.css
 │
 ├── models/
+│   ├── country.model.ts
 │   └── flag-question.model.ts
 │
 ├── services/
@@ -62,62 +75,3 @@ src/app
 │
 ├── app.routes.ts
 ├── app.config.ts
-🧩 Technologies utilisées
-
-Angular 21 (Standalone Components)
-
-TypeScript (strict mode)
-
-Angular HttpClient
-
-REST Countries API
-
-SSR / Hydration Angular
-
-🌐 API utilisée
-
-REST Countries
-Endpoint utilisé :
-
-https://restcountries.com/v3.1/all?fields=name,flags
-
-⚠️ L'API impose de spécifier explicitement les champs utilisés.
-
-🚀 Lancer le projet
-Installation
-npm install
-Lancer en mode développement
-npm start
-Lancer avec SSR
-npm run dev:ssr
-🧠 Points techniques importants
-
-Les données sont chargées une seule fois au démarrage
-
-Le quiz fonctionne via un état interne, sans rechargement de page
-
-Les timers (setTimeout) sont gérés avec NgZone pour garantir la mise à jour de l'UI
-
-Le projet respecte les bonnes pratiques Angular modernes
-
-👥 Travail en binôme
-
-🗣️ Un membre : réflexion, conception et échanges
-
-💻 Un membre : développement et implémentation
-
-Cette approche permet de séparer la logique métier de l'implémentation technique.
-
-📈 Améliorations possibles
-
-⏱ Ajout d'un timer par question
-
-💾 Sauvegarde du score
-
-🎨 Amélioration du design
-
-🌍 Autres types de quiz (capitales, régions, population)
-
-📄 Licence
-
-Projet réalisé à des fins pédagogiques.
