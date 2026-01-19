@@ -75,7 +75,13 @@ Ce type de prompt permet :
 - De comprendre que certaines erreurs proviennent de **contraintes externes** (API, Node, versions)
 - D’apprendre à **adapter son code aux évolutions des APIs**
 - De développer un **réflexe professionnel de lecture et d’analyse des messages d’erreur**
+  
+⚠️ Problématique rencontrée : appels API, routing et SSR
+Lors du développement de l’application, nous avons rencontré un problème lié à la combinaison des appels API, du routing Angular et du Server-Side Rendering (SSR). En naviguant entre les routes (notamment vers la page du quiz), les composants étaient bien instanciés et les appels API exécutés, mais les données n’étaient pas toujours correctement reflétées dans l’interface.
 
+Ce comportement était dû au cycle de vie spécifique d’Angular en SSR, où les composants peuvent être créés côté serveur puis réhydratés côté client, ce qui peut entraîner une perte ou une désynchronisation de l’état lors des changements de route.
+
+Pour résoudre ce problème de manière propre et conforme aux bonnes pratiques Angular, nous avons mis en place des Resolvers. Ceux-ci permettent de charger les données avant l’activation de la route, garantissant que les composants disposent des données nécessaires dès leur création, aussi bien côté serveur que côté client. Cette approche a permis de stabiliser le rendu, de corriger les problèmes de navigation et d’améliorer la fiabilité globale de l’application.
 ---
 ## ✅ Conclusion
 
